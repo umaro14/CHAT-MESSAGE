@@ -4,6 +4,7 @@ import path from 'path';
 
 import authRoutes from './routes/auth.route.js';
 import messageRoutes from './routes/message.route.js';
+import { connectDB } from './lib/db.js';
 
 //http://localhost:3000
 //http://localhost:3000/api/auth/signup
@@ -34,4 +35,6 @@ if(process.env.NODE_ENV === 'production'){
 
 
 
-app.listen(PORT, () => { console.log(`App is running on port ${PORT} 🚀🚀`);});
+app.listen(PORT, () => { console.log(`App is running on port ${PORT} 🚀🚀`)
+    connectDB();
+});
