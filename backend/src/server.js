@@ -20,6 +20,9 @@ const __dirname = path.resolve();
 
 const PORT = process.env.PORT || 5000; 
 
+// Middleware to parse JSON request bodies
+app.use(express.json());  
+
 app.use("/api/auth/", authRoutes)
 app.use("/api/messages/", messageRoutes)
 
