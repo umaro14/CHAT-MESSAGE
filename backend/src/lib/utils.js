@@ -13,4 +13,4 @@ export const generateToken = (userId, res) => {
         secure: process.env.NODE_ENV === "development" ? false : true,   // Only set cookie over HTTPS in production
     })
     return token;
-}
+};
