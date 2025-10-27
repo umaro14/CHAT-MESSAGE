@@ -1,7 +1,10 @@
 import jwt from 'jsonwebtoken';
 
 export const generateToken = (userId, res) => {
-    const token = jwt.sign({ userId }, process.env.JWT_SECRETE_KEY, { expiresIn: '7d' });
+   const { JWT_SECRETE_KEY} = process.env;
+   if(!JWT_SECRETE_KEY) throw new Error("JWT_SECRETE_KEY is not configured")
+
+   const token = jwt.sign({ userId }, JWT_SECRETE_KEY, { expiresIn: '7d' });
 
     res.cookie("jwt", token, {
         maxAge: 7 * 24 * 60 * 60 * 1000,                 // 7 days
